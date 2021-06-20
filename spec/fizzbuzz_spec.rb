@@ -1,16 +1,24 @@
 require 'fizzbuzz'
 
 describe 'fizzbuzz' do
-  it 'return "fizz" when given 3' do
-    expect(fizzbuzz(3)).to eq 'fizz' 
+  3.step(12, 3) do |num|
+    it 'returns "fizz" for multiples of 3' do
+      expect(fizzbuzz(num)).to eq "fizz"
+    end
   end
-  it 'return 4 when given 4' do
-    expect(fizzbuzz(4)).to eq 4
+  5.step(10, 5) do |num|
+    it 'returns "buzz" for multiples of 5' do
+      expect(fizzbuzz(num)).to eq "buzz"
+    end
   end
-  it 'returns "buzz" when given 5' do
-    expect(fizzbuzz(5)).to eq 'buzz'
+  it 'returns "fizzbuzz" when passed numbers divisible by 3 and 5' do
+    [15, 30, 45].each { |num|
+    expect(fizzbuzz(num)).to eq "fizzbuzz"
+    }
   end
-  it 'returns "fizzbuzz" when given 15' do
-    expect(fizzbuzz(15)).to eq 'fizzbuzz'
+  it 'returns number when number is not divisible by 3 or 5' do
+    [1,2,4,7,8,11].each { |num|
+    expect(fizzbuzz(num)).to eq num
+    }
   end
 end
